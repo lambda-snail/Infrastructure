@@ -5,6 +5,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+  - task: CmdLine@2
+    inputs:
+      script: |
+        cd '$(Build.Repository.LocalPath)'
+        mkdir parameters
+        cd parameters
+        git clone $(parameters-repository)
+
   - task: AzureResourceManagerTemplateDeployment@3
     displayName: 'Deploy Using Template'
     inputs:
@@ -12,5 +20,5 @@ steps:
       subscriptionId: '$(subscription-id)'
       resourceGroupName: '$(resource-group)'
       location: 'West Europe'
-      csmFile: '**/*.bicep'
-      csmParametersFileLink: '$(parameters-file-url)'
+      csmFile: '**/main.bicep'
+      csmParametersFile: '**/*.parameters.json'
