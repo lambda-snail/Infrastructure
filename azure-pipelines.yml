@@ -1,3 +1,14 @@
+resources:
+  repositories:
+  - repository: spbs-github
+    type: github
+    endpoint: $(sc-infrastrucutre-github)
+    name: lambda-snail/Infrastructure
+  - repository: spbs-devops
+    #endpoint: MyAzureReposGitServiceConnection
+    type: git
+    name: Spbs/infrastrucutre-parameters
+
 trigger:
 - master
 
@@ -5,6 +16,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+  - checkout: spbs-github
+  - checkout: spbs-devops
   - task: AzureResourceManagerTemplateDeployment@3
     displayName: 'Deploy Using Template'
     inputs:
