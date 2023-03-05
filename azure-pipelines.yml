@@ -12,5 +12,5 @@ steps:
       subscriptionId: '$(subscription-id)'
       resourceGroupName: '$(resource-group)'
       location: 'West Europe'
-      csmFile: '**/*.bicep'
+      csmFile: '**/main.bicep'
       csmParametersFileLink: '$(parameters-file-url)'
