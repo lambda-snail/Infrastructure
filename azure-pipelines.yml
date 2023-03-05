@@ -1,0 +1,16 @@
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: AzureResourceManagerTemplateDeployment@3
+    displayName: 'Deploy Using Template'
+    inputs:
+      azureResourceManagerConnection: 'sc-az-spbs-prod'
+      subscriptionId: '$(subscription-id)'
+      resourceGroupName: '$(resource-group)'
+      location: 'West Europe'
+      csmFile: '**/*.bicep'
+      csmParametersFileLink: '$(parameters-file-url)'
