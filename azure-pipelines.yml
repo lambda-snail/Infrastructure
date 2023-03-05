@@ -2,7 +2,7 @@ resources:
   repositories:
   - repository: spbs-github
     type: github
-    endpoint: $(sc-infrastrucutre-github)
+    endpoint: $(sc-infrastructure-github)
     name: lambda-snail/Infrastructure
   - repository: spbs-devops
     #endpoint: MyAzureReposGitServiceConnection
