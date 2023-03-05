@@ -21,4 +21,4 @@ steps:
       resourceGroupName: '$(resource-group)'
       location: 'West Europe'
       csmFile: '**/main.bicep'
-      csmParametersFileLink: '$(parameters-file-url)'
+      csmParametersFile: '**/*.parameters.json'
