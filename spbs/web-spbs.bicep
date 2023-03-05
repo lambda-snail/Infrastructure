@@ -2,7 +2,7 @@ param webAppName string
 param webAppLocation string
 param serverFarmId string
 
-var linuxFxVersion = 'DOTNETCORE|Latest'
+var linuxFxVersion = 'DOTNETCORE|7.0'
 
 resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   name: webAppName
@@ -14,6 +14,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
     siteConfig: {
       linuxFxVersion: linuxFxVersion
       minTlsVersion: '1.2'
+      webSocketsEnabled: true
     }
   }
   identity: {
